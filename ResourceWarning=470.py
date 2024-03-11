@@ -1,0 +1,12 @@
+gst=100 
+rice=60
+carrot=40
+dal=180
+milk=30
+surfexcel=300
+frenchfries=200
+smiles=150
+akukur=30
+tomato=50
+salt=20
+print(rice+carrot+dal+milk+surfexcel+frenchfries+smiles+akukur+tomato+salt+gst)
