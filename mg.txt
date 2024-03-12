@@ -1,0 +1,27 @@
+local thePart = script.Parent    --This refers to the part that will be moved. 
+
+--How far should the part move from its current position, in three dimentions (X,Y,Z).  
+local offsetXYZ = Vector3.new(-6, 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,10)   --X,Y,Z.  Move it -6 LEFT, 2 UP, and 10 FORWARD.     
+local pauseBeforeMove = 0     --Seconds to pause before moving the part to the target offset.  
+local pauseBefore returnning = 0     --Seconds to pause before returning the part to it's original position.  
+local speedOneWay = 0.1     --Speed: Time in seconds to complete one trip from orig to target.
+
+local tweenTargetProps = {}  --table of properties to change.
+local tweenOrigProps = {}    --Original property values.
+
+tweenTargetProps.Position = thePart.Position + offsetXYZ   --Add the offset to thePart's current position.
+tweenOrigProps.Position = thePart.Position   --Original position.
+
+local ts = game:GetService("TweenService")        --Roblox service for moving and changing properties over time.
+
+local tweenInfo = TweenInfo.new(speedOneWay,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut)  --Speed up and slow down at the beginning and end of each move.
+local tweenToTarget = ts:Create(thePart, tweenInfo, tweenTargetProps)      --Prepare tween animation for the target location.
+local tweenToOrig = ts:Create(thePart, tweenInfo, tweenOrigProps)        --Prepare tween animation for the return to the original location.
+
+while true do                        --Repeat the indented statements listed below over and over until the script .    task.wait(pauseBeforeMove)        --Optional pause you can set above.
+    tweenToTarget:Play()            --Gradually move the part from the original position to the target position, based on the speed.
+    tweenToTarget.Completed:Wait()    --Wait for it to finish the move.
+    task.wait(pauseBeforeReturning)    --Optional pause you can set above.
+    tweenToOrig:Play()                --Gradually move the part back to it's orginal positiohe speed.
+    tweenToOrig.Completed:Wait()    --Wait for it to finish the move.  Then repeat this "while" loop indefinitely. 
+end
