@@ -1,0 +1,5 @@
+classmethod=int(input('Enter cm: '))
+if classmethod==1 :print("cm set 1") 
+if classmethod==2 :print ("cm set 2")
+if classmethod==3 :print ("cm set 3")
+a=int(input('2 Enter cm: ')) ;print("set") ;print(classmethod+a)
