@@ -1,0 +1,8 @@
+css = 555555
+
+if css == 555555:
+  print("valid")
+else:
+  pass  # Do nothing if the condition is not met
+
+print(css)
